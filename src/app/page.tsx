@@ -3,6 +3,7 @@ import TypewriterTitle from "@/components/TypewriterTitle";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
@@ -22,8 +23,9 @@ export default function Home() {
 
         <div className="flex justify-center">  
           <Link href="/dashboard">
-            <Button className="bg-gradient ">
+            <Button className="bg-gradient font-mont ">
               Get Started
+              <ArrowRight className="ml-2 w-5 h-5" strokeWidth={3}/>
             </Button>
           </Link>
         </div>
