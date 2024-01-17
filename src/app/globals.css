@@ -87,3 +87,10 @@
   background-clip: text;
   color: transparent; 
 }
+
+.bg-gradient {
+  background-image: linear-gradient(90deg, rgb(151, 15, 31,0.75) 0%, rgb(68, 54, 174,0.75) 100%);
+  background-clip:padding-box;
+  color:opaque; 
+
+}
