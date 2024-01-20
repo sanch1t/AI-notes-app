@@ -35,7 +35,7 @@ const CreateNoteDialog = (props: Props) => {
             You can create a new note by clicking the button below.
           </DialogDescription>
         </DialogHeader>
-        {/* <form onSubmit={handleSubmit}>
+        {/* <form onSubmit={handleSubmit}> */}
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -48,16 +48,16 @@ const CreateNoteDialog = (props: Props) => {
             </Button>
             <Button
               type="submit"
-              className="bg-green-600"
-              disabled={createNotebook.isLoading}
+              className="bg-gradient"
+              // disabled={createNotebook.isLoading}
             >
-              {createNotebook.isLoading && (
+              {/* {createNotebook.isLoading && (
                 <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-              )}
+              )} */}
               Create
             </Button>
           </div>
-        </form> */}
+        {/* </form> */}
       </DialogContent>
     </Dialog>
   );
