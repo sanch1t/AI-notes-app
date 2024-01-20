@@ -24,7 +24,7 @@ const CreateNoteDialog = (props: Props) => {
     const [input, setInput] = React.useState("");
     const createNotebook = useMutation({
       mutationFn: async()=>{
-        const response = await axios.post('/api/createNoteBook',{
+        const response = await axios.post('/api/createNoteBook/route',{
         name: input
         })
         return response.data  
