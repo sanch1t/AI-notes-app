@@ -9,7 +9,7 @@ const config = new Configuration({
 const openai = new OpenAIApi(config)
 
 export async function generateImagePrompt(name: string) {
-        
+
         try {
             const response = await openai.createChatCompletion({
                 model: 'gpt-3.5-turbo',
@@ -24,7 +24,7 @@ export async function generateImagePrompt(name: string) {
                     `Please generate a thumbnail description for my notebook titled ${name}`
                 }]
             }) 
-        
+
             const data = await response.json()
             const  image_description = data.choices[0].message.content
             return image_description as string
