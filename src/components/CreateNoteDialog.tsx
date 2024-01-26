@@ -27,7 +27,7 @@ const CreateNoteDialog = (props: Props) => {
 
     const createNotebook = useMutation({
       mutationFn: async()=>{
-        const response = await axios.post('/api/createNoteBook/route',
+        const response = await axios.post('/api/createNoteBook',
         {
         name: input
         })
@@ -40,8 +40,8 @@ const CreateNoteDialog = (props: Props) => {
         return
       }
       createNotebook.mutate(undefined,{
-        onSuccess: () => {
-          console.log('Note Created!')
+        onSuccess: (note_id) => {
+          console.log('the new note is ', {note_id})
         },
         onError: (error)=>{
           console.error(error)
