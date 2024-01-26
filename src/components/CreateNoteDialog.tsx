@@ -23,24 +23,25 @@ type Props = {};
 const CreateNoteDialog = (props: Props) => {
     const [input, setInput] = React.useState("");
 
-    
+
     const createNotebook = useMutation({
-      mutationFn: async()=>{
-        const response = await axios.post('/api/createNoteBook/route',{
+      mutationFn: async( ) => {
+        const response = await axios.post('/api/createNoteBook/route',
+        {
         name: input
         })
         return response.data  
     }})
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>)=>{
-      e.preventDefault()
-      if(input === ''){
-        window.alert('A name is needed for a note.')
-        return
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      if (input === "") {
+        window.alert("Please enter a name for your notebook");
+        return;
       }
-      createNotebook.mutate(undefined,{
-        onSuccess: () => {
-          console.log('Note Created!')
+      createNotebook.mutate(undefined, {
+        onSuccess: ({ note_id }) => {
+          console.log("created new note:", { note_id });
         },
         onError: (error)=>{
           console.error(error)
@@ -99,3 +100,4 @@ const CreateNoteDialog = (props: Props) => {
 }
 
 export default CreateNoteDialog
+
