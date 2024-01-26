@@ -25,18 +25,18 @@ const CreateNoteDialog = (props: Props) => {
 
 
     const createNotebook = useMutation({
-      mutationFn: async( ) => {
-        const response = await axios.post('/api/createNoteBook/route',
-        {
-        name: input
-        })
-        return response.data  
-    }})
+      mutationFn: async () => {
+        const response = await axios.post("/api/createNoteBook", {
+          name: input,
+        });
+        return response.data;
+      },
+    });
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       if (input === "") {
-        window.alert("Pleases enter a name for your notebook");
+        window.alert("Pleases essnter a name for your notebook");
         return;
       }
       createNotebook.mutate(undefined, {
