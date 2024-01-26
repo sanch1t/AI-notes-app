@@ -36,7 +36,7 @@ const CreateNoteDialog = (props: Props) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       if (input === "") {
-        window.alert("Pleases essnter a name for your notebook");
+        window.alert("Please enter a name for your notebook");
         return;
       }
       createNotebook.mutate(undefined, {
