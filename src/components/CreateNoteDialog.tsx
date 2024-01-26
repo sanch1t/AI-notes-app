@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import react from "react";
 import {
   Dialog,
   DialogContent,
@@ -21,15 +21,18 @@ type Props = {};
 
 
 const CreateNoteDialog = (props: Props) => {
-    const [input, setInput] = React.useState("");
+    const [input, setInput] = react.useState('');
+
+
+
     const createNotebook = useMutation({
       mutationFn: async()=>{
-        const response = await axios.post('/api/createNoteBook/route',{
+        const response = await axios.post('/api/createNoteBook/route',
+        {
         name: input
         })
         return response.data  
     }})
-
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>)=>{
       e.preventDefault()
       if(input === ''){
@@ -68,7 +71,7 @@ const CreateNoteDialog = (props: Props) => {
             You can create a new note by clicking the button below.
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}> 
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}

@@ -16,7 +16,7 @@ export async function generateImagePrompt(name: string) {
                 messages : [{
                     role:'system',
                     content:
-                    "You are creative and helpful. You generate captivating yet accurate thumbnail descriptions for notes. Your output is fed into DALL-E API to generate a thumbnail. The description should be minimalistic, flat-style and accurate."
+                    "You are creative and helpful. You generate captivating yet accurate thumbnail descriptions for notes. Your output is fed into DALL-E API to generate a thumbnail. The description should be minimalistic, flat-styled and accurate."
                 },
                 {
                     role:"user",
@@ -25,10 +25,11 @@ export async function generateImagePrompt(name: string) {
                 }]
             }) 
 
-            const data = await response.json()
-            const  image_description = data.choices[0].message.content
-            return image_description as string
+        const data = await response.json()
+        const  image_description = data.choices[0].message.content
+        return image_description as string
         } 
+
         catch (error) {
             console.log(error);
             throw error;
