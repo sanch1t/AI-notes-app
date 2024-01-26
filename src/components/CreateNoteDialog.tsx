@@ -45,7 +45,7 @@ const CreateNoteDialog = (props: Props) => {
         },
         onError: (error)=>{
           console.error(error)
-          console.log('imp')
+          throw error
         }
       })
     }
