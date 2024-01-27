@@ -94,4 +94,15 @@
   color:opaque; 
 
 }
+
+.tiptap.ProseMirror{
+  outline: none;
+}
+
+.is-active{
+  background-color: rgb(151, 15, 31,0.2);
+  border-radius: 2px;
+  border-style: dashed;
+}
+
 /* no */
