@@ -21,7 +21,9 @@ type Props = {};
 
 
 const CreateNoteDialog = (props: Props) => {
-    const [input, setInput] = react.useState('');
+  const router = useRouter()
+  const [input, setInput] = react.useState('');
+
 
 
 
@@ -39,16 +41,19 @@ const CreateNoteDialog = (props: Props) => {
         window.alert('A name is needed for a note.')
         return
       }
-      createNotebook.mutate(undefined,{
-        onSuccess: (note_id) => {
-          console.log('the new note is ', {note_id})
+      createNotebook.mutate(undefined, {
+        onSuccess: ({ note_id }) => {
+          console.log("created new note:", {note_id});
+          // hit another endpoint to uplod the temp dalle url to permanent firebase url 
+          // uploadToFirebase.mutate(note_id);
+          router.push(`/notebook/${note_id}`);
         },
-        onError: (error)=>{
-          console.error(error)
-          throw error
-        }
-      })
-    }
+        onError: (error) => {
+          console.error(error);
+          window.alert("Failed to create new notebook");
+        },
+      });
+    };
 
 
     
@@ -85,11 +90,11 @@ const CreateNoteDialog = (props: Props) => {
             <Button
               type="submit"
               className="bg-gradient"
-              // disabled={createNotebook.isLoading}
+              disabled={createNotebook.isPending}
             >
-              {/* {createNotebook.isLoading && (
+              {createNotebook.isPending && (
                 <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-              )} */}
+              )}
               Create
             </Button>
           </div>
