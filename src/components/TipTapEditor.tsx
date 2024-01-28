@@ -14,6 +14,7 @@ type Props = {note: NoteType}
 
 const TipTapEditor = ({note}: Props) => {
   
+
   const saveNote = useMutation({mutationFn: async()=>{
     const response = await axios.post('/api/saveNote',{
       noteId: note.id,
@@ -32,18 +33,20 @@ const TipTapEditor = ({note}: Props) => {
       setEditorState(editor.getHTML())
     }})
 
-  const debouncedEditorState= useDebounce(editorState, 600)
-  React.useEffect(()=>{
-    if(debouncedEditorState===''){
-      return saveNote.mutate(undefined, {
-        onSuccess: data => {
-          console.log('updated', data)
-        },
-        onError: err =>{
-          console.error(err)
-        }})}}, 
-      [debouncedEditorState])
 
+  const debouncedEditorState = useDebounce(editorState, 1000);
+  React.useEffect(() => {
+    // save to db
+    if (debouncedEditorState === "") return;
+    saveNote.mutate(undefined, {
+      onSuccess: (data) => {
+        console.log("success update!", data);
+      },
+      onError: (err) => {
+        console.error(err);
+      },
+    });
+  }, [debouncedEditorState]);
 
 
 
@@ -54,8 +57,8 @@ const TipTapEditor = ({note}: Props) => {
    
     <Button 
       className='font-mont' size='sm' disabled variant={"outline"}>
-        {saveNote.isPending?"Saving...":"Saved"}
-    </Button>
+        {saveNote.isPending ? "Saving..." : "Saved"}
+    </Button> 
     </div>
       <div className='font-mont font-400 prose'>
         <EditorContent editor={editor}/>
