@@ -18,7 +18,7 @@ const TipTapEditor = ({ note }: Props) => {
     note.editorState || `<h1>${note.name}</h1>`
   );
   const { complete, completion } = useCompletion({
-    api: `/api/completion/`,
+    api: ("/api/completion"),
   });
   const saveNote = useMutation({
     mutationFn: async () => {
