@@ -18,7 +18,7 @@ const TipTapEditor = ({ note }: Props) => {
     note.editorState || `<h1>${note.name}</h1>`
   );
   const { complete, completion } = useCompletion({
-    api: ("/api/completion"),
+    api: "/api/completion",
   });
   const saveNote = useMutation({
     mutationFn: async () => {
@@ -34,7 +34,7 @@ const TipTapEditor = ({ note }: Props) => {
       return {
         "Shift-a": () => {
           // take the last 30 words
-          const prompt = this.editor.getText().split(" ").slice(30).join(" ");
+          const prompt = this.editor.getText().split(" ").slice(-30).join(" ");
           complete(prompt);
           return true;
         },
@@ -85,7 +85,7 @@ const TipTapEditor = ({ note }: Props) => {
         <EditorContent editor={editor} />
       </div>
       <div className="h-4"></div>
-      <span className="text-sm font-mont font-400">
+      <span className="text-sm">
         Tip: Press{" "}
         <kbd className="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg">
           Shift + A
