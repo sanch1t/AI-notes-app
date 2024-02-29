@@ -22,7 +22,6 @@ const DeleteButton = ({ noteId }: Props) => {
   });
   return (
     <Button
-      className="font-mont bg-gradient"
       variant={"destructive"}
       size="sm"
       disabled={deleteNote.isPending}
