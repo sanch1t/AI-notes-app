@@ -15,6 +15,8 @@ import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 
+ export const runtime = "edge";
+
 
 type Props = {};
 
