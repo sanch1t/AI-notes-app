@@ -27,7 +27,7 @@ export async function POST(req: Request) {
         I am writing a piece of text in a notion text editor app.
         Help me complete my train of thought here: ${prompt}
         keep the tone of the text consistent with the rest of the text.
-        keep the response short and sweet. Only respond with additives, do not add your own response to the answer. Never repeat the original prompt in you answer. Leave an extra space at the start of your answer.
+        keep the response short and sweet. Only respond with additives, do not add your own response to the answer. Never repeat the original prompt in you answer. Leave an extra space at the start of your answer. Responses should be strictly within 20-60 words.
         `,
       },
     ],
